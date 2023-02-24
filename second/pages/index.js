@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import styles from "../styles/Home.module.css"
 
 
 export default function Home() {
+  const number=5
   return (
     <>
       <Head>
@@ -11,7 +13,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-       <h1>INDEX</h1>
+       <h1 className='title'>INDEX</h1>
+       <style jsx>
+        {
+          `
+          .title{
+            background:${number>2? 'blue' :'red'}
+          }
+          `
+        }
+       </style>
       </main>
     </>
   )
