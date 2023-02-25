@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from "../styles/Home.module.css"
 
 
-export default function Home() {
+export default function Home({posts}) {
   const number=5
   return (
     <>
@@ -23,7 +23,20 @@ export default function Home() {
           `
         }
        </style>
+       {posts?.map((user)=>(<div>
+        {user.id}
+       </div>))}
       </main>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const posts = await res.json();
+  return {
+    props:{
+      posts
+    }
+  }
 }
