@@ -1,9 +1,12 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from "../styles/Home.module.css"
 
 
-export default function Home({posts,users}) {
+export default function Home({users}) {
   const number=5
+  const router = useRouter(); 
   return (
     <>
       <Head>
@@ -23,28 +26,28 @@ export default function Home({posts,users}) {
           `
         }
        </style>
-       {posts?.map((user)=>(<div>
-        {user.id}
-       </div>))}
+       
        {users?.map((user)=>(<div>
-        {user.id}
+        <h4 key={user.id} onClick={()=>router.push('user/'+user.id)}>
+          {user.name}
+        </h4>
        </div>))}
       </main>
     </>
   )
 }
-/*
+
 export const getServerSideProps = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users');
-  const posts = await res.json();
+  const users = await res.json();
   return {
     props:{
-      posts
+      users
     }
   }
 }
-*/
 
+/*
 export const getStaticProps=async()=>{
   const res = await fetch('https://jsonplaceholder.typicode.com/users')
   const users = await res.json()
@@ -54,4 +57,4 @@ export const getStaticProps=async()=>{
       users
     }
   }
-}
+}*/
