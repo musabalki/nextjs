@@ -36,16 +36,40 @@ export default function Home({users}) {
     </>
   )
 }
+export const getStaticPaths  = async (context) => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users/');
+  const users = await res.json();
+  const ids = users.map(user=>user.id)
+  const path = ids.map((id)=>({params:{id:id.toString()}}))
+  console.log(path)
+  return {
+    props:{
+      path,
+      fallback:false
+    } 
+  }
+}
+export const getStaticProps   = async (context) => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users/'+`${context.params.id})`);
+  const users = await res.json();
+  return {
+    props:{
+      users
+    } 
+  }
+}
 
-export const getServerSideProps = async () => {
+
+/*
+export const getServerSideProps  = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users');
   const users = await res.json();
   return {
     props:{
       users
-    }
+    } 
   }
-}
+}*/
 
 /*
 export const getStaticProps=async()=>{
