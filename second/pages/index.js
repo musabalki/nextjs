@@ -45,7 +45,7 @@ export const getStaticPaths  = async (context) => {
   return {
     props:{
       path,
-      fallback:false
+      fallback:false  
     } 
   }
 }
