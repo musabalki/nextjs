@@ -1,7 +1,11 @@
+import Header from '@/components/header'
+import HomeContainer from '@/containers/home'
 import React from 'react'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div>Home</div>
+    <div>
+      <HomeContainer/>
+    </div>
   )
 }
