@@ -1,9 +1,13 @@
 import React from 'react'
+import Input from "../../components/input"
 
 function Hakkimizda() {
   console.log("Hakkımızda")
   return (
-    <div>Hakkimizda</div>
+    <div>
+      HAKKIMIZDA
+      <Input/>
+    </div>
   )
 }
 
