@@ -2,7 +2,12 @@
 import React, { useEffect,useState } from 'react'
 
 const getData = async() =>{
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts/1")
+  /*const res = await fetch("https://jsonplaceholder.typicode.com/posts/1",{
+    cache:"no-store"
+  })*/
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts/1",{
+    next:{revalidate:10}
+  })
   return  res.json();
 }
 
@@ -14,5 +19,5 @@ export default async function Page() {
     setMessage("useEffect Message")
   },[])
   console.log("Page")*/
-  return (<div>Pagetest</div>)
+  return (<div>Page</div>)
 }
